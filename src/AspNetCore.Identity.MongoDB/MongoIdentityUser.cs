@@ -31,13 +31,8 @@ namespace AspNetCore.Identity.MongoDB
 
         public MongoIdentityUser(string userName)
         {
-            if (userName == null)
-            {
-                throw new ArgumentNullException(nameof(userName));
-            }
-
             Id = ObjectId.GenerateNewId().ToString();
-            UserName = userName;
+            UserName = userName ?? throw new ArgumentNullException(nameof(userName));
             CreatedOn = new Occurrence();
 
             EnsureClaimsIsSet();

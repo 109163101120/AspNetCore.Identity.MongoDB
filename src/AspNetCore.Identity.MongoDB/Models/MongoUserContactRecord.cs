@@ -8,12 +8,7 @@ namespace AspNetCore.Identity.MongoDB.Models
     {
         protected MongoUserContactRecord(string value)
         {
-            if (value == null)
-            {
-                throw new ArgumentNullException(nameof(value));
-            }
-
-            Value = value;
+            Value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
         public string Value { get; private set; }

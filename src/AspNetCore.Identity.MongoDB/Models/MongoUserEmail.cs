@@ -12,12 +12,7 @@ namespace AspNetCore.Identity.MongoDB.Models
 
         public virtual void SetNormalizedEmail(string normalizedEmail)
         {
-            if (normalizedEmail == null)
-            {
-                throw new ArgumentNullException(nameof(normalizedEmail));
-            }
-
-            NormalizedValue = normalizedEmail;
+            NormalizedValue = normalizedEmail ?? throw new ArgumentNullException(nameof(normalizedEmail));
         }
     }
 }

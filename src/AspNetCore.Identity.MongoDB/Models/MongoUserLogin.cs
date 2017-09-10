@@ -9,12 +9,7 @@ namespace AspNetCore.Identity.MongoDB.Models
     {
         public MongoUserLogin(UserLoginInfo loginInfo)
         {
-            if (loginInfo == null)
-            {
-                throw new ArgumentNullException(nameof(loginInfo));
-            }
-
-            LoginProvider = loginInfo.LoginProvider;
+            LoginProvider = loginInfo?.LoginProvider ?? throw new ArgumentNullException(nameof(loginInfo));
             ProviderKey = loginInfo.ProviderKey;
             ProviderDisplayName = loginInfo.ProviderDisplayName;
         }

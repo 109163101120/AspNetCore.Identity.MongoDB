@@ -9,28 +9,14 @@ namespace AspNetCore.Identity.MongoDB.Models
     {
         public MongoUserClaim(Claim claim)
         {
-            if (claim == null)
-            {
-                throw new ArgumentNullException(nameof(claim));
-            }
-
-            ClaimType = claim.Type;
+            ClaimType = claim?.Type ?? throw new ArgumentNullException(nameof(claim));
             ClaimValue = claim.Value;
         }
 
         public MongoUserClaim(string claimType, string claimValue)
         {
-            if (claimType == null)
-            {
-                throw new ArgumentNullException(nameof(claimType));
-            }
-            if (claimValue == null)
-            {
-                throw new ArgumentNullException(nameof(claimValue));
-            }
-
-            ClaimType = claimType;
-            ClaimValue = claimValue;
+            ClaimType = claimType ?? throw new ArgumentNullException(nameof(claimType));
+            ClaimValue = claimValue ?? throw new ArgumentNullException(nameof(claimValue));
         }
 
         public string ClaimType { get; private set; }
