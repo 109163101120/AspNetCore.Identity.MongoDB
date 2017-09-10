@@ -139,7 +139,7 @@ namespace AspNetCore.Identity.MongoDB
 
             user.SetNormalizedUserName(normalizedName);
 
-            return Task.FromResult(0);
+            return Task.CompletedTask;
         }
 
         public Task SetUserNameAsync(TUser user, string userName, CancellationToken cancellationToken)
@@ -176,7 +176,7 @@ namespace AspNetCore.Identity.MongoDB
 
             user.AddLogin(new MongoUserLogin(login));
 
-            return Task.FromResult(0);
+            return Task.CompletedTask;
         }
 
         public Task RemoveLoginAsync(TUser user, string loginProvider, string providerKey, CancellationToken cancellationToken)
@@ -193,7 +193,7 @@ namespace AspNetCore.Identity.MongoDB
                 user.RemoveLogin(loginToRemove);
             }
 
-            return Task.FromResult(0);
+            return Task.CompletedTask;
         }
 
         public Task<IList<UserLoginInfo>> GetLoginsAsync(TUser user, CancellationToken cancellationToken)
@@ -243,7 +243,7 @@ namespace AspNetCore.Identity.MongoDB
                 user.AddClaim(claim);
             }
 
-            return Task.FromResult(0);
+            return Task.CompletedTask;
         }
 
         public Task ReplaceClaimAsync(TUser user, Claim claim, Claim newClaim, CancellationToken cancellationToken)
@@ -255,7 +255,7 @@ namespace AspNetCore.Identity.MongoDB
             user.RemoveClaim(new MongoUserClaim(claim));
             user.AddClaim(newClaim);
 
-            return Task.FromResult(0);
+            return Task.CompletedTask;
         }
 
         public Task RemoveClaimsAsync(TUser user, IEnumerable<Claim> claims, CancellationToken cancellationToken)
@@ -268,7 +268,7 @@ namespace AspNetCore.Identity.MongoDB
                 user.RemoveClaim(new MongoUserClaim(claim));
             }
 
-            return Task.FromResult(0);
+            return Task.CompletedTask;
         }
 
         public async Task<IList<TUser>> GetUsersForClaimAsync(Claim claim, CancellationToken cancellationToken)
@@ -295,7 +295,7 @@ namespace AspNetCore.Identity.MongoDB
 
             user.SetPasswordHash(passwordHash);
 
-            return Task.FromResult(0);
+            return Task.CompletedTask;
         }
 
         public Task<string> GetPasswordHashAsync(TUser user, CancellationToken cancellationToken)
@@ -319,7 +319,7 @@ namespace AspNetCore.Identity.MongoDB
 
             user.SetSecurityStamp(stamp);
 
-            return Task.FromResult(0);
+            return Task.CompletedTask;
         }
 
         public Task<string> GetSecurityStampAsync(TUser user, CancellationToken cancellationToken)
@@ -345,7 +345,7 @@ namespace AspNetCore.Identity.MongoDB
                 user.DisableTwoFactorAuthentication();
             }
 
-            return Task.FromResult(0);
+            return Task.CompletedTask;
         }
 
         public Task<bool> GetTwoFactorEnabledAsync(TUser user, CancellationToken cancellationToken)
@@ -362,7 +362,7 @@ namespace AspNetCore.Identity.MongoDB
 
             user.SetEmail(email);
 
-            return Task.FromResult(0);
+            return Task.CompletedTask;
         }
 
         public Task<string> GetEmailAsync(TUser user, CancellationToken cancellationToken)
@@ -396,7 +396,7 @@ namespace AspNetCore.Identity.MongoDB
                 user.Email.SetUnconfirmed();
             }
 
-            return Task.FromResult(0);
+            return Task.CompletedTask;
         }
 
         public Task<TUser> FindByEmailAsync(string normalizedEmail, CancellationToken cancellationToken)
@@ -433,7 +433,7 @@ namespace AspNetCore.Identity.MongoDB
                 user.Email?.SetNormalizedEmail(normalizedEmail);   
             }
 
-            return Task.FromResult(0);
+            return Task.CompletedTask;
         }
 
         public Task<DateTimeOffset?> GetLockoutEndDateAsync(TUser user, CancellationToken cancellationToken)
@@ -456,7 +456,7 @@ namespace AspNetCore.Identity.MongoDB
                 user.LockUntil(lockoutEnd.Value.UtcDateTime);
             }
 
-            return Task.FromResult(0);
+            return Task.CompletedTask;
         }
 
         public async Task<int> IncrementAccessFailedCountAsync(TUser user, CancellationToken cancellationToken)
@@ -486,7 +486,7 @@ namespace AspNetCore.Identity.MongoDB
 
             user.ResetAccessFailedCount();
 
-            return Task.FromResult(0);
+            return Task.CompletedTask;
         }
 
         public Task<int> GetAccessFailedCountAsync(TUser user, CancellationToken cancellationToken)
@@ -516,7 +516,7 @@ namespace AspNetCore.Identity.MongoDB
                 user.DisableLockout();
             }
 
-            return Task.FromResult(0);
+            return Task.CompletedTask;
         }
 
         public Task SetPhoneNumberAsync(TUser user, string phoneNumber, CancellationToken cancellationToken)
@@ -530,7 +530,7 @@ namespace AspNetCore.Identity.MongoDB
 
             user.SetPhoneNumber(phoneNumber);
 
-            return Task.FromResult(0);
+            return Task.CompletedTask;
         }
 
         public Task<string> GetPhoneNumberAsync(TUser user, CancellationToken cancellationToken)
@@ -555,7 +555,7 @@ namespace AspNetCore.Identity.MongoDB
 
             user.PhoneNumber.SetConfirmed();
 
-            return Task.FromResult(0);
+            return Task.CompletedTask;
         }
 
         public void Dispose()
